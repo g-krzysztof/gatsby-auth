@@ -3,12 +3,22 @@ import { navigate } from "gatsby"
 import Form from "./Form"
 import View from "./View"
 import { handleLogin, isLoggedIn } from "../utils/auth"
+import styles from "./Form/form.module.css";
+
+const Cookies = require('js-cookie')
 
 class Login extends React.Component {
   state = {
     username: ``,
     password: ``,
+    displayLogButton: true
   }
+
+  callError = () => {
+    this.setState({
+      displayLogButton: true
+    })
+}
 
   handleUpdate(event) {
     this.setState({
@@ -16,22 +26,54 @@ class Login extends React.Component {
     })
   }
 
-  handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault()
-    handleLogin(this.state)
+    this.setState({
+      displayLogButton: false
+    })
+    handleLogin(this.state, this.callError)
   }
 
   render() {
-    if (isLoggedIn()) {
+    // if (isLoggedIn()) {
+    if (Cookies.get('session')) {
       navigate(`/app/profile`)
     }
 
     return (
       <View title="Log In">
-        <Form
-          handleUpdate={e => this.handleUpdate(e)}
-          handleSubmit={e => this.handleSubmit(e)}
-        />
+        <form
+            className={styles.form}
+            method="post"
+            onSubmit={event => {
+              this.handleSubmit(event)
+              // navigate(`/app/profile`)
+            }}
+        >
+          <p className={styles[`form__instructions`]}>
+            For this demo, please log in with the username <code>gatsby</code> and the
+            password <code>demo</code>.
+          </p>
+          <label className={styles[`form__label`]}>
+            Username
+            <input
+                className={styles[`form__input`]}
+                type="text"
+                name="username"
+                onChange={event=>this.handleUpdate(event)}
+            />
+          </label>
+          <label className={styles[`form__label`]}>
+            Password
+            <input
+                className={styles[`form__input`]}
+                type="password"
+                name="password"
+                onChange={event=>this.handleUpdate(event)}
+            />
+          </label>
+          {this.state.displayLogButton ? <input className={styles[`form__button`]} type="submit" value="Log In" /> : <div>Spinner</div>}
+        </form>
       </View>
     )
   }

@@ -4,8 +4,10 @@
   "version": "1.0.0",
   "author": "Jason Lengstorf <jason@lengstorf.com>",
   "dependencies": {
+    "final-form": "^4.20.1",
     "gatsby": "^2.24.63",
     "gatsby-plugin-react-helmet": "^3.3.11",
+    "js-cookie": "^2.2.1",
     "prop-types": "^15.7.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
