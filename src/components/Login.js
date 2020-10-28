@@ -58,11 +58,10 @@ class Login extends React.Component {
             }}
         >
           <p className={styles[`form__instructions`]}>
-            For this demo, please log in with the username <code>gatsby</code> and the
-            password <code>demo</code>.
+            Welcome on <code>auth</code> page.
           </p>
           <label className={styles[`form__label`]}>
-            Username
+            E-mail
             <input
                 className={styles[`form__input`]}
                 type="text"

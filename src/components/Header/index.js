@@ -19,6 +19,9 @@ const Header = () => (
         <Link to="/" className={styles[`header__link`]}>
           Home
         </Link>
+        <Link to="/app/register" className={styles[`header__link`]}>
+          Register
+        </Link>
         <Link to="/app/profile" className={styles[`header__link`]}>
           Profile
         </Link>
