@@ -11,14 +11,21 @@ class Login extends React.Component {
   state = {
     username: ``,
     password: ``,
-    displayLogButton: true
+    displayLogButton: true,
+    error: false
   }
 
-  callError = () => {
+  clearSubmitButton = () => {
     this.setState({
       displayLogButton: true
     })
-}
+  }
+
+  setError = (errorMessage) => {
+    this.setState({
+      error: errorMessage
+    })
+  }
 
   handleUpdate(event) {
     this.setState({
@@ -31,7 +38,7 @@ class Login extends React.Component {
     this.setState({
       displayLogButton: false
     })
-    handleLogin(this.state, this.callError)
+    handleLogin(this.state, this.clearSubmitButton, this.setError)
   }
 
   render() {
@@ -72,6 +79,7 @@ class Login extends React.Component {
                 onChange={event=>this.handleUpdate(event)}
             />
           </label>
+          {this.state.error ? <div>{this.state.error}</div> : null}
           {this.state.displayLogButton ? <input className={styles[`form__button`]} type="submit" value="Log In" /> : <div>Spinner</div>}
         </form>
       </View>

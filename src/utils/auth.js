@@ -11,7 +11,7 @@ const getUser = () =>
 
 const setUser = user => (window.localStorage.gatsbyUser = JSON.stringify(user))
 
-export const handleLogin = ({ username, password }, callError) => {
+export const handleLogin = ({ username, password }, clearSubmitButton, setError) => {
   if (!isBrowser) return false
 
   // if (username === `gatsby` && password === `demo`) {
@@ -32,20 +32,27 @@ export const handleLogin = ({ username, password }, callError) => {
     },
     body: JSON.stringify(data),
   })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Success:', data);
-        Cookies.set('session', data.token);
-        setUser({
-          name: data.name,
-          legalName: data.user,
-          email: data.token,
-        });
-        return navigate(`/app/profile`)
+      .then(response => {
+          if(response.status === 400){
+              return response.json()
+                  .then(data=>{
+                      clearSubmitButton()
+                      setError(data.error)
+                  })
+          }
+          if(data.status === 200){
+              Cookies.set('session', data.json.token);
+              setUser({
+                  name: data.json.name,
+                  legalName: data.json.user,
+                  email: data.json.token,
+              });
+          }
+          return navigate(`/app/profile`)
       })
       .catch((error) => {
         console.error('Error:', error);
-          callError()
+          clearSubmitButton()
       });
 
   return false
