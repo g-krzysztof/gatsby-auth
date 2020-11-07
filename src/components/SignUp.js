@@ -57,7 +57,7 @@ class SignUp extends React.Component {
                                 this.setError(data.error)
                             })
                     }
-                    if(data.status === 200){
+                    if(response.status === 200){
                         // Cookies.set('session', data.json.token);
                         // setUser({
                         //     name: data.json.name,

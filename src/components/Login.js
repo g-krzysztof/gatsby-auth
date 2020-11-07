@@ -1,8 +1,7 @@
 import React from "react"
 import { navigate } from "gatsby"
-import Form from "./Form"
 import View from "./View"
-import { handleLogin, isLoggedIn } from "../utils/auth"
+import { handleLogin } from "../utils/auth"
 import styles from "./Form/form.module.css";
 
 const Cookies = require('js-cookie')
@@ -42,7 +41,6 @@ class Login extends React.Component {
   }
 
   render() {
-    // if (isLoggedIn()) {
     if (Cookies.get('session')) {
       navigate(`/app/profile`)
     }
@@ -54,7 +52,6 @@ class Login extends React.Component {
             method="post"
             onSubmit={event => {
               this.handleSubmit(event)
-              // navigate(`/app/profile`)
             }}
         >
           <p className={styles[`form__instructions`]}>
