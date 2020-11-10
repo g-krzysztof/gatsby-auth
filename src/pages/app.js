@@ -2,6 +2,7 @@ import React from "react"
 import { Router } from "@reach/router"
 import Layout from "../components/Layout"
 import Profile from "../components/Profile"
+import Memory from "../components/Memory"
 import Details from "../components/Details"
 import Login from "../components/Login"
 import SignUp from "../components/SignUp"
@@ -15,6 +16,7 @@ const App = () => (
     <Router>
       <PrivateRoute path="/app/details" component={Details} />
       <PrivateRoute path="/app/profile" component={Profile} />
+      <PrivateRoute path="/app/memory" component={Memory} />
       <Login path="/app/login" />
       <SignUp path="/app/register" />
       <Success path="/app/success" />

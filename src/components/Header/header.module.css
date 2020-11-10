@@ -3,9 +3,9 @@
 }
 
 .header__wrap {
-  align-items: baseline;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   margin: 0 auto;
   max-width: 1024px;
   padding: 1rem 0;

@@ -1,0 +1,46 @@
+.memory {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  max-width: 72vh;
+  margin: 30px auto 0 auto;
+}
+
+.memory__btn {
+  cursor: pointer;
+  width: 10vh;
+  height: 10vh;
+  margin: 1vh;
+  font-size: 6vh;
+  font-weight: bold;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.memory__btn--disabled {
+  background-color: aquamarine;
+  border: 1px solid grey;
+  cursor: default;
+}
+
+.memory__text {
+  width: 100%;
+  margin: 3vh auto;
+  text-align: center;
+  font-size: 5vh;
+  font-weight: bold;
+}
+
+.memory__restart-btn {
+  margin: 0 auto;
+  padding: 1vh;
+  width: 50vh;
+  font-size: 2vh;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 1vh;
+  font-weight: bold;
+}
+/*# sourceMappingURL=App.css.map */

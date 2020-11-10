@@ -25,6 +25,9 @@ const Header = () => (
         <Link to="/app/profile" className={styles[`header__link`]}>
           Profile
         </Link>
+        <Link to="/app/memory" className={styles[`header__link`]}>
+          Memory Game
+        </Link>
         <Link to="/app/details" className={styles[`header__link`]}>
           Details
         </Link>
