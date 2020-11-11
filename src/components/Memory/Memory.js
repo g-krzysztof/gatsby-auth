@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import Button from './Button';
+import {navigate} from "gatsby";
+import { getCurrentUser } from "../../utils/auth";
+
+const { legalName } = getCurrentUser()
 
 class Memory extends Component {
     click1 = ""
@@ -28,13 +32,63 @@ class Memory extends Component {
             { id: 17, name: 'F', clicked: false, disabled: false },
         ],
         step: 0,
-        count: 0
+        count: 0,
+        endGame: false,
+        endGameMessage: ''
     }
 
     compareNumbers = () => {
         let a = Math.random() - 0.5;
         let b = Math.random() - 0.5;
         return a - b
+    }
+
+    async handleEndGame() {
+
+        const data = { id: legalName, score: this.state.count };
+
+        fetch('https://express-api-krissg.netlify.app/.netlify/functions/api/user/memory', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then(response => {
+                if(response.status === 400){
+                    return response.json()
+                        .then(data=>{
+                            console.log(data)
+                        })
+                }
+                if(response.status === 200){
+                    return response.json()
+                        .then(data=>{
+                            this.setState({
+                                endGameMessage: data.message
+                            })
+                        })
+                }
+
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
+    endGame = () => {
+        if(this.state.endGame === false){
+            let disabledButtons = 0;
+            this.state.buttons.map(button=>{
+                if(button.disabled === true){disabledButtons = disabledButtons + 1}
+            })
+            if(disabledButtons === 18){
+                this.setState({
+                    endGame: true
+                });
+                this.handleEndGame()
+            }
+        }
     }
 
     // mixing the table with buttons
@@ -77,6 +131,7 @@ class Memory extends Component {
                     })
                 }
             }
+            this.endGame();
         }, 1000);
     }
 
@@ -128,7 +183,8 @@ class Memory extends Component {
         this.setState({
             buttons,
             count: 0,
-            step: 0
+            step: 0,
+            endGame: false
         })
     }
 
@@ -137,6 +193,8 @@ class Memory extends Component {
             <div className="memory">
                 <Button buttons={this.state.buttons} onClick={this.handleClick} />
                 <div className="memory__text">Liczba prób: {this.state.count}</div>
+                {this.state.endGame ? <div style={{width: '100%', padding: '0 0 15px 0', color: 'orangered', display: 'flex', justifyContent: 'center'}}>
+                    {this.state.endGameMessage}</div> : null}
                 <button onClick={this.handleRestartButton} className="memory__restart-btn">Zagraj od nowa</button>
             </div>
         );
