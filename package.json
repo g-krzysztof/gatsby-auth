@@ -7,11 +7,14 @@
     "final-form": "^4.20.1",
     "gatsby": "^2.24.63",
     "gatsby-plugin-react-helmet": "^3.3.11",
+    "gatsby-plugin-react-leaflet": "^2.0.13",
     "js-cookie": "^2.2.1",
+    "leaflet": "1.6.0",
     "prop-types": "^15.7.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "react-leaflet": "2.7.0"
   },
   "keywords": [
     "gatsby"
