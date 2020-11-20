@@ -1,5 +1,5 @@
 .header {
-  background-color: rebeccapurple;
+  background-color: #52b673;
 }
 
 .header__wrap {
@@ -36,9 +36,9 @@
   margin-left: -0.25rem;
 }
 
-.header__link:hover,
-.header__link:active,
-.header__link:focus {
-  background: white;
-  color: rebeccapurple;
-}
+/*.header__link:hover,*/
+/*.header__link:active,*/
+/*.header__link:focus {*/
+/*  background: white;*/
+/*  color: rebeccapurple;*/
+/*}*/

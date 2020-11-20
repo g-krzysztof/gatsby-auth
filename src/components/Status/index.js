@@ -18,18 +18,19 @@ export default () => {
 
     details = (
       <p className={styles[`status__text`]}>
-        Logged in as {name} ({email}
-        )!
+        Logged in as {name}
+        {/*({email}*/}
+        {/*)!*/}
         {` `}
-        <a
-          href="/"
-          onClick={event => {
-            event.preventDefault()
-            logout(() => navigate(`/app/login`))
-          }}
-        >
-          log out
-        </a>
+        {/*<a*/}
+        {/*  href="/"*/}
+        {/*  onClick={event => {*/}
+        {/*    event.preventDefault()*/}
+        {/*    logout(() => navigate(`/app/login`))*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  log out*/}
+        {/*</a>*/}
       </p>
     )
   }

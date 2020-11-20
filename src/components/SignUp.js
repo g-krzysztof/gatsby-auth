@@ -4,6 +4,9 @@ import View from "../components/View"
 import styles from "../components/Form/form.module.css";
 import {handleLogin} from "../utils/auth";
 
+import { PrimaryButton } from "@fluentui/react";
+import { TextField } from '@fluentui/react';
+
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -93,15 +96,13 @@ class SignUp extends React.Component {
                         <p className={styles[`form__instructions`]}>
                             Provide your <code>e-mail</code> and <code>password</code>.
                         </p>
-                        <label className={styles[`form__label`]}>
-                            Name
-                            <input
-                                className={styles[`form__input`]}
-                                type="text"
-                                name="name"
-                                onChange={event=>this.handleUpdate(event)}
-                            />
-                        </label>
+                        <TextField
+                            label="name"
+                            // className={styles[`form__input`]}
+                            type="text"
+                            name="name"
+                            onChange={event=>this.handleUpdate(event)}
+                        />
                         <label className={styles[`form__label`]}>
                             E-mail
                             <input
@@ -129,8 +130,9 @@ class SignUp extends React.Component {
                                 onChange={event=>this.handleUpdate(event)}
                             />
                         </label>
+                        <div style={{height: '20px'}}></div>
                         {this.state.error ? <div>{this.state.error}</div> : null}
-                        {this.state.displayLogButton ? <input className={styles[`form__button`]} type="submit" value="Register" /> : <div>Spinner</div>}
+                        {this.state.displayLogButton ? <PrimaryButton type="submit" >Register</PrimaryButton> : <div>Spinner</div>}
                     </form>
                 </View>
         )
