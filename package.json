@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Jason Lengstorf <jason@lengstorf.com>",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "final-form": "^4.20.1",
     "gatsby": "^2.24.63",
     "gatsby-plugin-react-helmet": "^3.3.11",

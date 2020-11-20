@@ -1,5 +1,8 @@
 import { navigate } from "gatsby"
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 const Cookies = require('js-cookie');
 
 const isBrowser = typeof window !== `undefined`
@@ -16,7 +19,7 @@ export const handleLogin = ({ username, password }, clearSubmitButton, setError)
 
     const data = { email: username, password: password };
 
-    fetch('https://express-api-krissg.netlify.app/.netlify/functions/api/user/login', {
+    fetch(`${process.env.API_PATH}user/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

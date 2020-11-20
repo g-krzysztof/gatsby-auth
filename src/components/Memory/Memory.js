@@ -4,6 +4,9 @@ import Button from './Button';
 import {navigate} from "gatsby";
 import { getCurrentUser } from "../../utils/auth";
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 const { legalName } = getCurrentUser()
 
 class Memory extends Component {
@@ -47,7 +50,7 @@ class Memory extends Component {
 
         const data = { id: legalName, score: this.state.count };
 
-        fetch('https://express-api-krissg.netlify.app/.netlify/functions/api/user/memory', {
+        fetch(`${process.env.API_PATH}user/memory`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -4,6 +4,9 @@ import View from "../components/View"
 import styles from "../components/Form/form.module.css";
 import {handleLogin} from "../utils/auth";
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 class SignUp extends React.Component {
 
     state = {
@@ -37,12 +40,10 @@ class SignUp extends React.Component {
         this.setState({
             displayLogButton: false
         })
-        // handleLogin(this.state, this.clearSubmitButton, this.setError)
-        //  handleLogin = ({ username, password }, clearSubmitButton, setError) => {
 
             const data = { name: this.state.name, email: this.state.email, password: this.state.password };
 
-            fetch('https://express-api-krissg.netlify.app/.netlify/functions/api/user/register', {
+            fetch(`${process.env.API_PATH}user/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
