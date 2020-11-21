@@ -102,46 +102,48 @@ const _farItems = [
 ];
 
 const Header = () => (
-  <header className={styles.header}>
-    <div className={styles[`header__wrap`]}>
-      <h1 className={styles[`header__heading`]}>
-        <Link
-          to="/"
-          className={`${styles[`header__link`]} ${
-            styles[`header__link--home`]
-          }`}
-        >
-          Gatsby Auth
-        </Link>
-      </h1>
-      {/*<nav role="main" className={styles[`header__nav`]}>*/}
-      {/*  <Link to="/" className={styles[`header__link`]}>*/}
-      {/*//     Home*/}
-      {/*//   </Link>*/}
-      {/*//   <Link to="/app/register" className={styles[`header__link`]}>*/}
-      {/*//     Register*/}
-      {/*//   </Link>*/}
-      {/*//   <Link to="/app/profile" className={styles[`header__link`]}>*/}
-      {/*//     Profile*/}
-      {/*//   </Link>*/}
-      {/*//   <Link to="/app/memory" className={styles[`header__link`]}>*/}
-      {/*//     Memory Game*/}
-      {/*//   </Link>*/}
-      {/*  <Link to="/app/airly" className={styles[`header__link`]}>*/}
-      {/*    Airly*/}
-      {/*  </Link>*/}
-      {/*  <Link to="/app/details" className={styles[`header__link`]}>*/}
-      {/*    Details*/}
-      {/*  </Link>*/}
-      {/*</nav>*/}
+    <header className={styles.header}>
+      <div className={styles[`header__wrap`]}>
+        <h1 className={styles[`header__heading`]}>
+          <Link
+              to="/"
+              className={`${styles[`header__link`]} ${
+                  styles[`header__link--home`]
+              }`}
+          >
+            Gatsby Auth
+          </Link>
+        </h1>
+        {/*<nav role="main" className={styles[`header__nav`]}>*/}
+        {/*  <Link to="/" className={styles[`header__link`]}>*/}
+        {/*//     Home*/}
+        {/*//   </Link>*/}
+        {/*//   <Link to="/app/register" className={styles[`header__link`]}>*/}
+        {/*//     Register*/}
+        {/*//   </Link>*/}
+        {/*//   <Link to="/app/profile" className={styles[`header__link`]}>*/}
+        {/*//     Profile*/}
+        {/*//   </Link>*/}
+        {/*//   <Link to="/app/memory" className={styles[`header__link`]}>*/}
+        {/*//     Memory Game*/}
+        {/*//   </Link>*/}
+        {/*  <Link to="/app/airly" className={styles[`header__link`]}>*/}
+        {/*    Airly*/}
+        {/*  </Link>*/}
+        {/*  <Link to="/app/details" className={styles[`header__link`]}>*/}
+        {/*    Details*/}
+        {/*  </Link>*/}
+        {/*</nav>*/}
 
-    </div>
-    <div style={{backgroundColor: 'white'}}>
-    <div style={{maxWidth: '1024px', margin: '0 auto'}}>
-      <CommandBarBasicExample />
-    </div>
-    </div>
-  </header>
+      </div>
+      <div style={{backgroundColor: 'white'}}>
+        <div style={{maxWidth: '1024px', margin: '0 auto'}}>
+          <div style={{margin: '0 -14px 0 -24px'}}>
+            <CommandBarBasicExample />
+          </div>
+        </div>
+      </div>
+    </header>
 )
 
 export default Header
